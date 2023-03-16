@@ -7,7 +7,6 @@
     src: url(HYImpact-Regular.ttf);
   }
   html, body {
-    height: 90%;
     font-family: Genshin;
   }
   h2 {
@@ -27,7 +26,6 @@
     font-family: Genshin;
   }
   #mommy{
-    height:100%;
     width: auto;
   }
   #twink{
@@ -138,12 +136,10 @@ document.getElementById("butt").onclick = function() {ship()};
 function ship() {
   let fPick = f[Math.floor(Math.random()*f.length)];
   let mPick = m[Math.floor(Math.random()*m.length)];
-  var heightRatio = 1-(mPick.height/fPick.height);
-  var biggerRatio = 100-(heightRatio*200);
-  var twink = document.getElementById("twink");
-  document.getElementById("twink").style.height = biggerRatio+'%';
+  document.getElementById("twink").style.height = (mPick.height*3)+'px';
   document.getElementById("twink").src = mPick.image;
   document.getElementById("mal").className = 'm ' + mPick.element;
+  document.getElementById("mommy").style.height = (fPick.height*3)+'px';
   document.getElementById("mommy").src = fPick.image;
   document.getElementById("fem").className = 'f ' + fPick.element;
   document.getElementById("mal").innerHTML = mPick.name;
