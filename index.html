@@ -7,6 +7,7 @@
     src: url(HYImpact-Regular.ttf);
   }
   html, body {
+    height: 90%;
     font-family: Genshin;
   }
   h2 {
@@ -26,6 +27,7 @@
     font-family: Genshin;
   }
   #mommy{
+    height:100%;
     width: auto;
   }
   #twink{
@@ -61,91 +63,90 @@
 <link rel="icon" href="Yae.png">
 </head>
 <body>
-
-<h2>
-  <div class="m" id="mal"></div>
-  <div class="f" id="fem"></div>
-</h2>
-<div id="container">
-  <div id="center">
-    <button type="button" id="butt">new pairing</button>
+  <img class="m" id="twink" align="left" align="bottom">
+  <img class="f" id="mommy" align="right" align="bottom">
+  <h2>
+    <div class="m" id="mal"></div>
+    <div class="f" id="fem"></div>
+  </h2>
+  <div id="container">
+    <div id="center">
+      <button type="button" id="butt">new pairing</button>
+    </div>
   </div>
-</div>
-<img class="m" id="twink" align="left" align="bottom">
-<img class="f" id="mommy" align="right" align="bottom">
-<script>
-function Char(n, e, a, h, w, i){
-  this.name = n;
-  this.element = e;
-  this.affiliation = a;
-  this.height = h;
-  this.weapon = w;
-  this.image = i;
-}
-const eC = "Cryo";
-const eE = "Electro";
-const eP = "Pyro";
-const eH = "Hydro";
-const eA = "Anemo";
-const eG = "Geo";
-const eD = "Dendro";
+  <script>
+    function Char(e, a, h, w, n, i){
+      this.element = e;
+      this.affiliation = a;
+      this.height = h;
+      this.weapon = w;
+      this.name = n;
+      this.image = i;
+    }
+    const eC = "Cryo";
+    const eE = "Electro";
+    const eP = "Pyro";
+    const eH = "Hydro";
+    const eA = "Anemo";
+    const eG = "Geo";
+    const eD = "Dendro";
 
-const aM = "Mondstadt";
-const aL = "Liyue";
-const aI = "Inazuma";
-const aF = "Fatui";
-const aS = "Sumeru";
-const aN = "Snezhnaya";
+    const aM = "Mondstadt";
+    const aL = "Liyue";
+    const aI = "Inazuma";
+    const aF = "Fatui";
+    const aS = "Sumeru";
+    const aN = "Snezhnaya";
 
-const wB = "bow";
-const wC = "catalyst";
-const wP = "polearm";
-const wS = "sword";
-const wL = "claymore";
+    const wB = "bow";
+    const wC = "catalyst";
+    const wP = "polearm";
+    const wS = "sword";
+    const wL = "claymore";
 
-const kuj = new Char("Kujou Sara",eE, aI, 175.7, wB, "https://static.wikia.nocookie.net/gensin-impact/images/9/99/Kujou_Sara_Portrait.png");
-const she = new Char("Shenhe", 		eC, aL, 171.8, wP, "https://static.wikia.nocookie.net/gensin-impact/images/9/9c/Shenhe_Portrait.png");
-const rai = new Char("Raiden Ei", eE, aI, 171.5, wP, "https://static.wikia.nocookie.net/gensin-impact/images/7/72/Raiden_Shogun_Portrait.png");
-const lis = new Char("Lisa", 		  eE, aM, 171.2, wC, "https://static.wikia.nocookie.net/gensin-impact/images/7/7a/Lisa_Portrait.png");
-const deh = new Char("Dehya", 		eP, aS, 170.4, wL, "https://cdn.discordapp.com/attachments/914305092495245386/1081716977359405066/latest.png");
-const eul = new Char("Eula", 		  eC, aM, 185.1, wL, "https://static.wikia.nocookie.net/gensin-impact/images/8/8a/Eula_Portrait.png"); //real height: 170.1
-const yel = new Char("Yelan", 		eH, aI, 170.1, wB, "https://static.wikia.nocookie.net/gensin-impact/images/0/0b/Yelan_Portrait.png"); 
-const jea = new Char("Jean", 		  eA, aM, 170.1, wS, "https://static.wikia.nocookie.net/gensin-impact/images/0/03/Jean_Portrait.png");
-const ros = new Char("Rosaria",		eC, aM, 169.7, wP, "https://static.wikia.nocookie.net/gensin-impact/images/e/e4/Rosaria_Portrait.png");
-const nin = new Char("Ningguang", eG, aL, 169.5, wC, "https://static.wikia.nocookie.net/gensin-impact/images/4/44/Ningguang_Portrait.png");
-const yae = new Char("Yae Miko", 	eE, aI, 169.5, wC, "https://static.wikia.nocookie.net/gensin-impact/images/a/a9/Yae_Miko_Portrait.png");
-const bei = new Char("Beidou", 		eE, aL, 169.2, wL, "https://static.wikia.nocookie.net/gensin-impact/images/0/05/Beidou_Portrait.png");
-const can = new Char("Candace",   eH, aS, 169.0, wP, "https://static.wikia.nocookie.net/gensin-impact/images/3/31/Candace_Portrait.png");
-const f = [kuj, ros, she, rai, lis, yel, jea, eul, nin, yae, bei, can, deh];
-const hei = new Char("Heizou", 		eA, aI, 167.3, wC, "https://static.wikia.nocookie.net/gensin-impact/images/a/a5/Shikanoin_Heizou_Portrait.png");
-const sca = new Char("Wanderer",  eA, aS, 164.7, wC, "https://static.wikia.nocookie.net/gensin-impact/images/0/03/Wanderer_Portrait.png");
-const ben = new Char("Bennett", 	eP, aM, 164.5, wS, "https://static.wikia.nocookie.net/gensin-impact/images/d/d8/Bennett_Portrait.png");
-const gor = new Char("Gorou", 		eG, aI, 164.4, wB, "https://static.wikia.nocookie.net/gensin-impact/images/1/14/Gorou_Portrait.png");
-const ven = new Char("Venti", 		eA, aM, 164.3, wB, "https://static.wikia.nocookie.net/gensin-impact/images/1/17/Venti_Portrait.png");
-const xig = new Char("Xingqiu", 	eH, aL, 164.2, wS, "https://static.wikia.nocookie.net/gensin-impact/images/0/05/Xingqiu_Portrait.png");
-const kaz = new Char("Kazuha", 		eA, aI, 163.9, wS, "https://static.wikia.nocookie.net/gensin-impact/images/b/b2/Kaedehara_Kazuha_Portrait.png");
-const raz = new Char("Razor", 		eE, aM, 133.5, wL, "https://static.wikia.nocookie.net/gensin-impact/images/3/37/Razor_Portrait.png"); //real height: 163.5
-const tig = new Char("Tighnari",  eD, aS, 163.3, wB, "https://static.wikia.nocookie.net/gensin-impact/images/c/c7/Tighnari_Portrait.png");
-const cho = new Char("Chongyun", 	eC, aL, 163.3, wL, "https://static.wikia.nocookie.net/gensin-impact/images/6/6d/Chongyun_Portrait.png");
-const alb = new Char("Albedo",		eG, aM, 162.8, wS, "https://static.wikia.nocookie.net/gensin-impact/images/9/97/Albedo_Portrait.png");
-const xia = new Char("Xiao", 		  eA, aL, 162.2, wP, "https://static.wikia.nocookie.net/gensin-impact/images/d/dc/Xiao_Portrait.png");
-const cyn = new Char("Cyno",      eE, aS, 161.9, wP, "https://static.wikia.nocookie.net/gensin-impact/images/a/a2/Cyno_Portrait.png");
-const m = [hei, ben, xig, ven, kaz, cho, gor, raz, xia, sca, tig, cyn, alb];
-ship();
-document.getElementById("butt").onclick = function() {ship()};
-function ship() {
-  let fPick = f[Math.floor(Math.random()*f.length)];
-  let mPick = m[Math.floor(Math.random()*m.length)];
-  document.getElementById("twink").style.height = (mPick.height*3)+'px';
-  document.getElementById("twink").src = mPick.image;
-  document.getElementById("mal").className = 'm ' + mPick.element;
-  document.getElementById("mommy").style.height = (fPick.height*3)+'px';
-  document.getElementById("mommy").src = fPick.image;
-  document.getElementById("fem").className = 'f ' + fPick.element;
-  document.getElementById("mal").innerHTML = mPick.name;
-  document.getElementById("fem").innerHTML = fPick.name;
-}
-</script>
-
+    const kuj = new Char(eE, aI, 175.7, wB,"Kujou Sara", "images/Kujou_Sara_Portrait.webp");
+    const she = new Char(eC, aL, 171.8, wP,"Shenhe", "images/Shenhe_Portrait.webp");
+    const rai = new Char(eE, aI, 171.5, wP,"Raiden Ei", "images/Raiden_Shogun_Portrait.webp");
+    const lis = new Char(eE, aM, 171.2, wC,"Lisa", "images/Lisa_Portrait.webp");
+    const deh = new Char(eP, aS, 170.4, wL,"Dehya", "images/Dehya_Portrait.webp");
+    const eul = new Char(eC, aM, 185.1, wL,"Eula", "images/Eula_Portrait.webp"); //real height: 170.1
+    const yel = new Char(eH, aI, 170.1, wB,"Yelan", "images/Yelan_Portrait.webp"); 
+    const jea = new Char(eA, aM, 170.1, wS,"Jean", "images/Jean_Portrait.webp");
+    const ros = new Char(eC, aM, 169.7, wP,"Rosaria", "images/Rosaria_Portrait.webp");
+    const nin = new Char(eG, aL, 169.5, wC,"Ningguang", "images/Ningguang_Portrait.webp");
+    const yae = new Char(eE, aI, 169.5, wC,"Yae Miko", "images/Yae_Miko_Portrait.webp");
+    const bei = new Char(eE, aL, 169.2, wL,"Beidou", "images/Beidou_Portrait.webp");
+    const can = new Char(eH, aS, 169.0, wP,"Candace", "images/Candace_Portrait.webp");
+    const f = [kuj, ros, she, rai, lis, yel, jea, eul, nin, yae, bei, can, deh];
+    const hei = new Char(eA, aI, 167.3, wC,"Heizou", "images/Shikanoin_Heizou_Portrait.webp");
+    const sca = new Char(eA, aS, 164.7, wC,"Wanderer", "images/Wanderer_Portrait.webp");
+    const ben = new Char(eP, aM, 164.5, wS,"Bennett", "images/Bennett_Portrait.webp");
+    const gor = new Char(eG, aI, 164.4, wB,"Gorou", "images/Gorou_Portrait.webp");
+    const ven = new Char(eA, aM, 164.3, wB,"Venti", "images/Venti_Portrait.webp");
+    const xig = new Char(eH, aL, 164.2, wS,"Xingqiu", "images/Xingqiu_Portrait.webp");
+    const kaz = new Char(eA, aI, 163.9, wS,"Kazuha", "images/Kaedehara_Kazuha_Portrait.webp");
+    const raz = new Char(eE, aM, 133.5, wL,"Razor", "images/Razor_Portrait.webp"); //real height: 163.5
+    const tig = new Char(eD, aS, 163.3, wB,"Tighnari", "images/Tighnari_Portrait.webp");
+    const cho = new Char(eC, aL, 163.3, wL,"Chongyun", "images/Chongyun_Portrait.webp");
+    const alb = new Char(eG, aM, 162.8, wS,"Albedo", "images/Albedo_Portrait.webp");
+    const xia = new Char(eA, aL, 162.2, wP,"Xiao", "images/Xiao_Portrait.webp");
+    const cyn = new Char(eE, aS, 161.9, wP,"Cyno", "images/Cyno_Portrait.webp");
+    const m = [hei, ben, xig, ven, kaz, cho, gor, raz, xia, sca, tig, cyn, alb];
+    ship();
+    document.getElementById("butt").onclick = function() {ship()};
+    function ship() {
+      let fPick = f[Math.floor(Math.random()*f.length)];
+      let mPick = m[Math.floor(Math.random()*m.length)];
+      var heightRatio = 1-(mPick.height/fPick.height);
+      var biggerRatio = 100-(heightRatio*200);
+      document.getElementById("twink").style.height = biggerRatio+'%';
+      document.getElementById("twink").src = mPick.image;
+      document.getElementById("mal").className = 'm ' + mPick.element;
+      document.getElementById("mommy").src = fPick.image;
+      document.getElementById("fem").className = 'f ' + fPick.element;
+      document.getElementById("mal").innerHTML = mPick.name;
+      document.getElementById("fem").innerHTML = fPick.name;
+    }
+  </script>
 </body>
 </html>
