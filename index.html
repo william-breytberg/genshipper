@@ -63,8 +63,8 @@
 <link rel="icon" href="Yae.png">
 </head>
 <body>
-  <img class="m" id="twink" align="left" align="bottom">
   <img class="f" id="mommy" align="right" align="bottom">
+  <img class="m" id="twink" align="left" align="bottom">
   <h2>
     <div class="m" id="mal"></div>
     <div class="f" id="fem"></div>
@@ -138,7 +138,7 @@
       let fPick = f[Math.floor(Math.random()*f.length)];
       let mPick = m[Math.floor(Math.random()*m.length)];
       var heightRatio = 1-(mPick.height/fPick.height);
-      var biggerRatio = 100-(heightRatio*200);
+      var biggerRatio = 100-(heightRatio*300);
       document.getElementById("twink").style.height = biggerRatio+'%';
       document.getElementById("twink").src = mPick.image;
       document.getElementById("mal").className = 'm ' + mPick.element;
