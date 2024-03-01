@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+<title>Genshipper</title>
 <style>
   @font-face{
     font-family: Genshin;
@@ -26,11 +27,10 @@
     font-size: large;
     font-family: Genshin;
   }
-  #mommy{
-    height:100%;
+  #imageM{
     width: auto;
   }
-  #twink{
+  #imageF{
     width: auto;
   }
   .f{
@@ -63,26 +63,26 @@
 <link rel="icon" href="Yae.png">
 </head>
 <body>
-  <img class="f" id="mommy" align="right" align="bottom">
-  <img class="m" id="twink" align="left" align="bottom">
-  <h2>
-    <div class="m" id="mal"></div>
-    <div class="f" id="fem"></div>
-  </h2>
+  <img class="f" id="imageF" align="right" align="bottom">
+  <h2 class="f" id="nameF"></h2>
+  <img class="m" id="imageM" align="left" align="bottom">
+  <h2 class="m" id="nameM"></h2>
   <div id="container">
     <div id="center">
       <button type="button" id="butt">new pairing</button>
     </div>
   </div>
   <script>
-    function Char(e, a, h, w, n, i){
+    function Char(e, a, h, w, n){
       this.element = e;
       this.affiliation = a;
-      this.height = h;
+      this.height = h/2; //converts height in centimeters to be usable as image percentage
       this.weapon = w;
       this.name = n;
-      this.image = i;
+      this.image = new Image();
+      this.image.src = 'images/'+n.replace(/ /g,"_")+'_Portrait.webp'; //auto-generates filepath from name
     }
+
     const eC = "Cryo";
     const eE = "Electro";
     const eP = "Pyro";
@@ -104,49 +104,63 @@
     const wS = "sword";
     const wL = "claymore";
 
-    const kuj = new Char(eE, aI, 175.7, wB,"Kujou Sara", "images/Kujou_Sara_Portrait.webp");
-    const she = new Char(eC, aL, 171.8, wP,"Shenhe", "images/Shenhe_Portrait.webp");
-    const rai = new Char(eE, aI, 171.5, wP,"Raiden Ei", "images/Raiden_Shogun_Portrait.webp");
-    const lis = new Char(eE, aM, 171.2, wC,"Lisa", "images/Lisa_Portrait.webp");
-    const deh = new Char(eP, aS, 170.4, wL,"Dehya", "images/Dehya_Portrait.webp");
-    const eul = new Char(eC, aM, 180.1, wL,"Eula", "images/Eula_Portrait.webp"); //real height: 170.1
-    const yel = new Char(eH, aI, 170.1, wB,"Yelan", "images/Yelan_Portrait.webp"); 
-    const jea = new Char(eA, aM, 170.1, wS,"Jean", "images/Jean_Portrait.webp");
-    const ros = new Char(eC, aM, 169.7, wP,"Rosaria", "images/Rosaria_Portrait.webp");
-    const nin = new Char(eG, aL, 169.5, wC,"Ningguang", "images/Ningguang_Portrait.webp");
-    const yae = new Char(eE, aI, 169.5, wC,"Yae Miko", "images/Yae_Miko_Portrait.webp");
-    const bei = new Char(eE, aL, 169.2, wL,"Beidou", "images/Beidou_Portrait.webp");
-    const can = new Char(eH, aS, 169.0, wP,"Candace", "images/Candace_Portrait.webp");
+    const kuj = new Char(eE, aI, 175.7, wB,"Kujou Sara");
+    const she = new Char(eC, aL, 171.8, wP,"Shenhe");
+    const rai = new Char(eE, aI, 171.5, wP,"Raiden Shogun");
+    const lis = new Char(eE, aM, 171.2, wC,"Lisa");
+    const deh = new Char(eP, aS, 170.4, wL,"Dehya");
+    const eul = new Char(eC, aM, 170.3, wL,"Eula");
+    const yel = new Char(eH, aI, 170.2, wB,"Yelan"); 
+    const jea = new Char(eA, aM, 170.1, wS,"Jean");
+    const ros = new Char(eC, aM, 169.7, wP,"Rosaria");
+    const nin = new Char(eG, aL, 169.6, wC,"Ningguang");
+    const yae = new Char(eE, aI, 169.5, wC,"Yae Miko");
+    const bei = new Char(eE, aL, 169.2, wL,"Beidou");
+    const can = new Char(eH, aS, 169.0, wP,"Candace");
     const f = [kuj, ros, she, rai, lis, yel, jea, eul, nin, yae, bei, can, deh];
-    const hei = new Char(eA, aI, 167.3, wC,"Heizou", "images/Shikanoin_Heizou_Portrait.webp");
-    const sca = new Char(eA, aS, 164.7, wC,"Wanderer", "images/Wanderer_Portrait.webp");
-    const ben = new Char(eP, aM, 164.5, wS,"Bennett", "images/Bennett_Portrait.webp");
-    const gor = new Char(eG, aI, 164.4, wB,"Gorou", "images/Gorou_Portrait.webp");
-    const ven = new Char(eA, aM, 164.3, wB,"Venti", "images/Venti_Portrait.webp");
-    const xig = new Char(eH, aL, 164.2, wS,"Xingqiu", "images/Xingqiu_Portrait.webp");
-    const kaz = new Char(eA, aI, 163.9, wS,"Kazuha", "images/Kaedehara_Kazuha_Portrait.webp");
-    const raz = new Char(eE, aM, 143.5, wL,"Razor", "images/Razor_Portrait.webp"); //real height: 163.5
-    const tig = new Char(eD, aS, 163.3, wB,"Tighnari", "images/Tighnari_Portrait.webp");
-    const cho = new Char(eC, aL, 163.3, wL,"Chongyun", "images/Chongyun_Portrait.webp");
-    const alb = new Char(eG, aM, 162.8, wS,"Albedo", "images/Albedo_Portrait.webp");
-    const xia = new Char(eA, aL, 162.2, wP,"Xiao", "images/Xiao_Portrait.webp");
-    const cyn = new Char(eE, aS, 161.9, wP,"Cyno", "images/Cyno_Portrait.webp");
-    const mik = new Char(eC, aM, 161.9, wP,"Mika", "images/Mika_Portrait.webp");
-    const m = [hei, ben, xig, ven, kaz, cho, gor, raz, xia, sca, tig, cyn, alb, mik];
+    
+    let imageF = document.getElementById("imageF");
+    let nameF = document.getElementById("nameF");
+    nameF.style.marginRight = '20%';
+
+    const hei = new Char(eA, aI, 167.3, wC,"Shikanoin Heizou");
+    const sca = new Char(eA, aS, 164.7, wC,"Wanderer");
+    const ben = new Char(eP, aM, 164.5, wS,"Bennett");
+    const gor = new Char(eG, aI, 164.4, wB,"Gorou");
+    const ven = new Char(eA, aM, 164.3, wB,"Venti");
+    const xig = new Char(eH, aL, 164.2, wS,"Xingqiu");
+    const kaz = new Char(eA, aI, 163.9, wS,"Kaedehara Kazuha");
+    const raz = new Char(eE, aM, 163.5, wL,"Razor");
+    const tig = new Char(eD, aS, 173.4, wB,"Tighnari"); //actual height 163.4, offset for big ears
+    const cho = new Char(eC, aL, 163.3, wL,"Chongyun");
+    const alb = new Char(eG, aM, 162.8, wS,"Albedo");
+    const xia = new Char(eA, aL, 162.2, wP,"Xiao");
+    const cyn = new Char(eE, aS, 171.9, wP,"Cyno"); //actual height 161.9, offset for big ears
+    const m = [hei, ben, xig, ven, kaz, cho, gor, raz, xia, sca, tig, cyn, alb];
+
+    let imageM = document.getElementById("imageM");
+    let nameM = document.getElementById("nameM");
+    nameM.style.marginLeft = '15%';
+
     ship();
     document.getElementById("butt").onclick = function() {ship()};
+
     function ship() {
-      let fPick = f[Math.floor(Math.random()*f.length)];
       let mPick = m[Math.floor(Math.random()*m.length)];
-      var heightRatio = 1-(mPick.height/fPick.height);
-      var biggerRatio = 100-(heightRatio*300);
-      document.getElementById("twink").style.height = biggerRatio+'%';
-      document.getElementById("twink").src = mPick.image;
-      document.getElementById("mal").className = 'm ' + mPick.element;
-      document.getElementById("mommy").src = fPick.image;
-      document.getElementById("fem").className = 'f ' + fPick.element;
-      document.getElementById("mal").innerHTML = mPick.name;
-      document.getElementById("fem").innerHTML = fPick.name;
+
+      imageM.style.height = mPick.height+'%'; //as below but to exaggerate height difference
+      imageM.src = mPick.image.src;
+
+      nameM.className = 'm ' + mPick.element;
+      nameM.innerHTML = mPick.name;
+
+      let fPick = f[Math.floor(Math.random()*f.length)];
+
+      imageF.style.height = (fPick.height+3)+'%'; //converts height in cm to percent
+      imageF.src = fPick.image.src;
+
+      nameF.className = 'f ' + fPick.element;
+      nameF.innerHTML = fPick.name;
     }
   </script>
 </body>
