@@ -131,7 +131,7 @@
       const aM = "Mondstadt";
       const aL = "Liyue";
       const aI = "Inazuma";
-      const aF = "Fatui";
+      const aF = "Fontaine";
       const aS = "Sumeru";
       const aN = "Snezhnaya";
 
@@ -141,8 +141,16 @@
       const wS = "sword";
       const wL = "claymore";
 
-      const kuj = new Char(eE, aI, 175.7, wB, "Kujou Sara");
-      const she = new Char(eC, aL, 171.8, wP, "Shenhe");
+      const arl = new Char(eP, aN, 173.1, wP, "Arlecchino");
+      const bei = new Char(eE, aL, 169.2, wL, "Beidou");
+      const can = new Char(eH, aS, 169.0, wP, "Candace");
+      const deh = new Char(eP, aS, 170.4, wL, "Dehya");
+      const eul = new Char(eC, aM, 170.3, wL, "Eula");
+      const jea = new Char(eA, aM, 170.1, wS, "Jean");
+      const kuj = new Char(eE, aI, 175.7, wB, "Kujou Sara"); //actual height 172.2, offset for big sandals
+      const lis = new Char(eE, aM, 171.2, wC, "Lisa");
+      const nav = new Char(eG, aF, 171.2, wL, "Navia");
+      const nin = new Char(eG, aL, 169.6, wC, "Ningguang");
       const rai = new Char(
         eE,
         aI,
@@ -151,63 +159,76 @@
         "Raiden Shogun",
         "Raiden%20Ei%20%7C%20Baal"
       );
-      const lis = new Char(eE, aM, 171.2, wC, "Lisa");
-      const deh = new Char(eP, aS, 170.4, wL, "Dehya");
-      const eul = new Char(eC, aM, 170.3, wL, "Eula");
-      const yel = new Char(eH, aI, 170.2, wB, "Yelan");
-      const jea = new Char(eA, aM, 170.1, wS, "Jean");
       const ros = new Char(eC, aM, 169.7, wP, "Rosaria");
-      const nin = new Char(eG, aL, 169.6, wC, "Ningguang");
+      const she = new Char(eC, aL, 171.8, wP, "Shenhe");
+      const xin = new Char(
+        eA,
+        aL,
+        170.9,
+        wC,
+        "Xianyun",
+        "Cloud%20Retainer%20%7C%20Xianyun"
+      );
       const yae = new Char(eE, aI, 169.5, wC, "Yae Miko");
-      const bei = new Char(eE, aL, 169.2, wL, "Beidou");
-      const can = new Char(eH, aS, 169.0, wP, "Candace");
+      const yel = new Char(eH, aI, 170.2, wB, "Yelan");
       const f = [
-        kuj,
-        ros,
-        she,
-        rai,
-        lis,
-        yel,
-        jea,
-        eul,
-        nin,
-        yae,
+        arl,
         bei,
         can,
         deh,
+        eul,
+        jea,
+        kuj,
+        lis,
+        nav,
+        nin,
+        rai,
+        ros,
+        she,
+        xin,
+        yae,
+        yel,
       ];
 
       let imageF = document.getElementById("imageF");
       let nameF = document.getElementById("nameF");
       nameF.style.marginRight = "10%";
 
-      const hei = new Char(eA, aI, 167.3, wC, "Shikanoin Heizou");
-      const sca = new Char(eA, aS, 164.7, wC, "Scaramouche");
-      const ben = new Char(eP, aM, 164.5, wS, "Bennett");
-      const gor = new Char(eG, aI, 164.4, wB, "Gorou");
-      const ven = new Char(eA, aM, 164.3, wB, "Venti");
-      const xig = new Char(eH, aL, 164.2, wS, "Xingqiu");
-      const kaz = new Char(eA, aI, 163.9, wS, "Kaedehara Kazuha");
-      const raz = new Char(eE, aM, 163.5, wL, "Razor");
-      const tig = new Char(eD, aS, 173.4, wB, "Tighnari"); //actual height 163.4, offset for big ears
-      const cho = new Char(eC, aL, 163.3, wL, "Chongyun");
       const alb = new Char(eG, aM, 162.8, wS, "Albedo");
+      const ben = new Char(eP, aM, 164.5, wS, "Bennett");
+      const cho = new Char(eC, aL, 163.3, wL, "Chongyun");
+      const cyn = new Char(eE, aS, 171.9, wP, "Cyno"); //actual height 161.9, offset for big hat
+      const fre = new Char(eC, aF, 161.8, wL, "Freminet");
+      const gam = new Char(eP, aL, 162.6, wL, "Gaming");
+      const gor = new Char(eG, aI, 164.4, wB, "Gorou");
+      const kaz = new Char(eA, aI, 163.9, wS, "Kaedehara Kazuha");
+      const lyn = new Char(eP, aF, 172.7, wB, "Lyney"); //actual height 162.7, offset for big hat
+      const mik = new Char(eC, aM, 161.4, wP, "Mika");
+      const raz = new Char(eE, aM, 163.5, wL, "Razor");
+      const sca = new Char(eA, aS, 164.7, wC, "Scaramouche");
+      const hei = new Char(eA, aI, 167.3, wC, "Shikanoin Heizou"); //actual height 163.8, offset for big sandals
+      const tig = new Char(eD, aS, 173.4, wB, "Tighnari"); //actual height 163.4, offset for big ears
+      const ven = new Char(eA, aM, 164.3, wB, "Venti");
       const xia = new Char(eA, aL, 162.2, wP, "Xiao", "Xiao%20%7C%20Alatus");
-      const cyn = new Char(eE, aS, 171.9, wP, "Cyno"); //actual height 161.9, offset for big ears
+      const xig = new Char(eH, aL, 164.2, wS, "Xingqiu");
       const m = [
-        hei,
+        alb,
         ben,
-        xig,
-        ven,
-        kaz,
         cho,
+        cyn,
+        fre,
+        gam,
         gor,
+        hei,
+        kaz,
+        lyn,
+        mik,
         raz,
-        xia,
         sca,
         tig,
-        cyn,
-        alb,
+        ven,
+        xia,
+        xig,
       ];
 
       let imageM = document.getElementById("imageM");
@@ -218,6 +239,26 @@
       document.getElementById("butt").onclick = function () {
         ship();
       };
+
+      function ficLink(nameA, nameB) {
+        if (nameA.includes("%20") || nameB.includes("%20")) {
+          return (
+            "https://archiveofourown.org/tags/" +
+            nameA +
+            "*s*" +
+            nameB +
+            "/works"
+          );
+        } else {
+          return (
+            "https://archiveofourown.org/tags/" +
+            nameA +
+            "*s*" +
+            nameB +
+            "%20(Genshin%20Impact)/works"
+          );
+        }
+      }
 
       function ship() {
         let mPick = m[Math.floor(Math.random() * m.length)];
@@ -237,24 +278,10 @@
         nameF.innerHTML = fPick.name;
 
         var fics = document.getElementById("fics");
-        if (mPick.name.localeCompare(fPick.name)) {
-          fics.setAttribute(
-            "href",
-            "https://archiveofourown.org/tags/" +
-              mPick.ao3 +
-              "*s*" +
-              fPick.ao3 +
-              "%20(Genshin%20Impact)/works"
-          );
+        if (mPick.name.localeCompare(fPick.name) < 0) {
+          fics.setAttribute("href", ficLink(mPick.name, fPick.name));
         } else {
-          fics.setAttribute(
-            "href",
-            "https://archiveofourown.org/tags/" +
-              fPick.ao3 +
-              "*s*" +
-              mPick.ao3 +
-              "%20(Genshin%20Impact)/works"
-          );
+          fics.setAttribute("href", ficLink(fPick.name, mPick.name));
         }
         var safb = document.getElementById("safb");
         safb.setAttribute(
