@@ -105,19 +105,11 @@
         }
         this.ao3 = o;
       }
-      function Char(e, a, h, w, n) {
-        this.element = e;
-        this.affiliation = a;
-        this.height = h / 2; //converts height in centimeters to be usable as image percentage
-        this.weapon = w;
-        this.name = n;
-        this.image = "images/" + n.replace(/ /g, "_") + "_Portrait.webp"; //auto-generates filepath from name
-        if (n.includes(" ")) {
-          this.booru = n.replace(/ /g, "_").toLowerCase() + "+";
-        } else {
-          this.booru = n.toLowerCase() + "_%28genshin_impact%29+";
-        }
-        this.ao3 = n.replace(/ /g, "%20");
+      function makeChar1(e, a, h, w, n) {
+        return new Char(e, a, h, w, n, n.replace(/ /g, "%20"));
+      }
+      function makeChar2(e, a, h, w, n, o) {
+        return new Char(e, a, h, w, n, o);
       }
 
       const eC = "Cryo";
@@ -141,17 +133,17 @@
       const wS = "sword";
       const wL = "claymore";
 
-      const arl = new Char(eP, aN, 173.1, wP, "Arlecchino");
-      const bei = new Char(eE, aL, 169.2, wL, "Beidou");
-      const can = new Char(eH, aS, 169.0, wP, "Candace");
-      const deh = new Char(eP, aS, 170.4, wL, "Dehya");
-      const eul = new Char(eC, aM, 170.3, wL, "Eula");
-      const jea = new Char(eA, aM, 170.1, wS, "Jean");
-      const kuj = new Char(eE, aI, 175.7, wB, "Kujou Sara"); //actual height 172.2, offset for big sandals
-      const lis = new Char(eE, aM, 171.2, wC, "Lisa");
-      const nav = new Char(eG, aF, 171.2, wL, "Navia");
-      const nin = new Char(eG, aL, 169.6, wC, "Ningguang");
-      const rai = new Char(
+      const arl = makeChar1(eP, aN, 173.1, wP, "Arlecchino");
+      const bei = makeChar1(eE, aL, 169.2, wL, "Beidou");
+      const can = makeChar1(eH, aS, 169.0, wP, "Candace");
+      const deh = makeChar1(eP, aS, 170.4, wL, "Dehya");
+      const eul = makeChar1(eC, aM, 170.3, wL, "Eula");
+      const jea = makeChar1(eA, aM, 170.1, wS, "Jean");
+      const kuj = makeChar1(eE, aI, 175.7, wB, "Kujou Sara"); //actual height 172.2, offset for big sandals
+      const lis = makeChar1(eE, aM, 171.2, wC, "Lisa");
+      const nav = makeChar1(eG, aF, 171.2, wL, "Navia");
+      const nin = makeChar1(eG, aL, 169.6, wC, "Ningguang");
+      const rai = makeChar2(
         eE,
         aI,
         171.5,
@@ -159,9 +151,9 @@
         "Raiden Shogun",
         "Raiden%20Ei%20%7C%20Baal"
       );
-      const ros = new Char(eC, aM, 169.7, wP, "Rosaria");
-      const she = new Char(eC, aL, 171.8, wP, "Shenhe");
-      const xin = new Char(
+      const ros = makeChar1(eC, aM, 169.7, wP, "Rosaria");
+      const she = makeChar1(eC, aL, 171.8, wP, "Shenhe");
+      const xin = makeChar2(
         eA,
         aL,
         170.9,
@@ -169,8 +161,8 @@
         "Xianyun",
         "Cloud%20Retainer%20%7C%20Xianyun"
       );
-      const yae = new Char(eE, aI, 169.5, wC, "Yae Miko");
-      const yel = new Char(eH, aI, 170.2, wB, "Yelan");
+      const yae = makeChar1(eE, aI, 169.5, wC, "Yae Miko");
+      const yel = makeChar1(eH, aI, 170.2, wB, "Yelan");
       const f = [
         arl,
         bei,
@@ -194,23 +186,23 @@
       let nameF = document.getElementById("nameF");
       nameF.style.marginRight = "10%";
 
-      const alb = new Char(eG, aM, 162.8, wS, "Albedo");
-      const ben = new Char(eP, aM, 164.5, wS, "Bennett");
-      const cho = new Char(eC, aL, 163.3, wL, "Chongyun");
-      const cyn = new Char(eE, aS, 171.9, wP, "Cyno"); //actual height 161.9, offset for big hat
-      const fre = new Char(eC, aF, 161.8, wL, "Freminet");
-      const gam = new Char(eP, aL, 162.6, wL, "Gaming");
-      const gor = new Char(eG, aI, 164.4, wB, "Gorou");
-      const kaz = new Char(eA, aI, 163.9, wS, "Kaedehara Kazuha");
-      const lyn = new Char(eP, aF, 172.7, wB, "Lyney"); //actual height 162.7, offset for big hat
-      const mik = new Char(eC, aM, 161.4, wP, "Mika");
-      const raz = new Char(eE, aM, 163.5, wL, "Razor");
-      const sca = new Char(eA, aS, 164.7, wC, "Scaramouche");
-      const hei = new Char(eA, aI, 167.3, wC, "Shikanoin Heizou"); //actual height 163.8, offset for big sandals
-      const tig = new Char(eD, aS, 173.4, wB, "Tighnari"); //actual height 163.4, offset for big ears
-      const ven = new Char(eA, aM, 164.3, wB, "Venti");
-      const xia = new Char(eA, aL, 162.2, wP, "Xiao", "Xiao%20%7C%20Alatus");
-      const xig = new Char(eH, aL, 164.2, wS, "Xingqiu");
+      const alb = makeChar1(eG, aM, 162.8, wS, "Albedo");
+      const ben = makeChar1(eP, aM, 164.5, wS, "Bennett");
+      const cho = makeChar1(eC, aL, 163.3, wL, "Chongyun");
+      const cyn = makeChar1(eE, aS, 171.9, wP, "Cyno"); //actual height 161.9, offset for big hat
+      const fre = makeChar1(eC, aF, 161.8, wL, "Freminet");
+      const gam = makeChar1(eP, aL, 162.6, wL, "Gaming");
+      const gor = makeChar1(eG, aI, 164.4, wB, "Gorou");
+      const kaz = makeChar1(eA, aI, 163.9, wS, "Kaedehara Kazuha");
+      const lyn = makeChar1(eP, aF, 172.7, wB, "Lyney"); //actual height 162.7, offset for big hat
+      const mik = makeChar1(eC, aM, 161.4, wP, "Mika");
+      const raz = makeChar1(eE, aM, 163.5, wL, "Razor");
+      const sca = makeChar1(eA, aS, 164.7, wC, "Scaramouche");
+      const hei = makeChar1(eA, aI, 167.3, wC, "Shikanoin Heizou"); //actual height 163.8, offset for big sandals
+      const tig = makeChar1(eD, aS, 173.4, wB, "Tighnari"); //actual height 163.4, offset for big ears
+      const ven = makeChar1(eA, aM, 164.3, wB, "Venti");
+      const xia = makeChar2(eA, aL, 162.2, wP, "Xiao", "Xiao%20%7C%20Alatus");
+      const xig = makeChar1(eH, aL, 164.2, wS, "Xingqiu");
       const m = [
         alb,
         ben,
@@ -241,23 +233,13 @@
       };
 
       function ficLink(nameA, nameB) {
-        if (nameA.includes("%20") || nameB.includes("%20")) {
-          return (
-            "https://archiveofourown.org/tags/" +
-            nameA +
-            "*s*" +
-            nameB +
-            "/works"
-          );
-        } else {
-          return (
-            "https://archiveofourown.org/tags/" +
-            nameA +
-            "*s*" +
-            nameB +
-            "%20(Genshin%20Impact)/works"
-          );
-        }
+        return (
+          "https://archiveofourown.org/tags/" +
+          nameA +
+          "*s*" +
+          nameB +
+          "%20(Genshin%20Impact)/works"
+        );
       }
 
       function ship() {
@@ -279,9 +261,9 @@
 
         var fics = document.getElementById("fics");
         if (mPick.name.localeCompare(fPick.name) < 0) {
-          fics.setAttribute("href", ficLink(mPick.name, fPick.name));
+          fics.setAttribute("href", ficLink(mPick.ao3, fPick.ao3));
         } else {
-          fics.setAttribute("href", ficLink(fPick.name, mPick.name));
+          fics.setAttribute("href", ficLink(fPick.ao3, mPick.ao3));
         }
         var safb = document.getElementById("safb");
         safb.setAttribute(
