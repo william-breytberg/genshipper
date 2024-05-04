@@ -1,167 +1,269 @@
 <!DOCTYPE html>
 <html>
-<head>
-<title>Genshipper</title>
-<style>
-  @font-face{
-    font-family: Genshin;
-    src: url(HYImpact-Regular.ttf);
-  }
-  html, body {
-    height: 90%;
-    font-family: Genshin;
-  }
-  h2 {
-    text-shadow:
-    -1px -1px 0 #000,
-    1px -1px 0 #000,
-    -1px 1px 0 #000,
-    1px 1px 0 #000;  
-  }
-  img {
-    position: absolute;
-    bottom: 1px;
-  }
-  button {
-    left: 50%;
-    font-size: large;
-    font-family: Genshin;
-  }
-  #imageM{
-    width: auto;
-  }
-  #imageF{
-    width: auto;
-  }
-  .f{
-    text-align: right;
-    right: 1px;
-  }
-  .m{
-    text-align: left;
-    left: 1px;
-  }
-  #container { 
-    position: relative;
-  }
+  <head>
+    <title>Genshipper</title>
+    <style>
+      @font-face {
+        font-family: Genshin;
+        src: url(HYImpact-Regular.ttf);
+      }
+      html,
+      body {
+        height: 90%;
+        font-family: Genshin;
+      }
+      h2 {
+        text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000,
+          1px 1px 0 #000;
+      }
+      img {
+        position: absolute;
+        bottom: 1px;
+      }
+      button {
+        left: 50%;
+        font-size: large;
+        font-family: Genshin;
+      }
+      #imageM {
+        width: auto;
+      }
+      #imageF {
+        width: auto;
+      }
+      .f {
+        text-align: right;
+        right: 1px;
+      }
+      .m {
+        text-align: left;
+        left: 1px;
+      }
+      #container {
+        position: relative;
+      }
 
-  #center {
-    margin: 0;
-    position: absolute;
-    left: 50%;
-    -ms-transform: translate(-50%, -50%);
-    transform: translate(-50%, -50%);
-  }
-  .Cryo {color:#a0e9e5;}
-  .Electro {color:#a757cb;}
-  .Pyro {color: #fe925d;}
-  .Hydro {color: #21e1eb;}
-  .Anemo {color: #72e2c3;}
-  .Geo {color: #e3b342;}
-  .Dendro {color: #23c18a;}
-</style>
-<link rel="icon" href="Yae.png">
-</head>
-<body>
-  <img class="f" id="imageF" align="right" align="bottom">
-  <h2 class="f" id="nameF"></h2>
-  <img class="m" id="imageM" align="left" align="bottom">
-  <h2 class="m" id="nameM"></h2>
-  <div id="container">
-    <div id="center">
-      <button type="button" id="butt">new pairing</button>
+      #center {
+        margin: 0;
+        position: absolute;
+        left: 50%;
+        -ms-transform: translate(-50%, -50%);
+        transform: translate(-50%, -50%);
+      }
+      .Cryo {
+        color: #a0e9e5;
+      }
+      .Electro {
+        color: #a757cb;
+      }
+      .Pyro {
+        color: #fe925d;
+      }
+      .Hydro {
+        color: #21e1eb;
+      }
+      .Anemo {
+        color: #72e2c3;
+      }
+      .Geo {
+        color: #e3b342;
+      }
+      .Dendro {
+        color: #23c18a;
+      }
+    </style>
+    <link rel="icon" href="Yae.png" />
+  </head>
+  <body>
+    <img class="f" id="imageF" align="right" align="bottom" />
+    <h2 class="f" id="nameF"></h2>
+    <img class="m" id="imageM" align="left" align="bottom" />
+    <h2 class="m" id="nameM"></h2>
+    <div id="container">
+      <div id="center">
+        <button type="button" id="butt">new pairing</button>
+        <a id="safb" href="https://tinyurl.com/Genshipper" target="_blank"
+          ><p>Safebooru</p></a
+        >
+        <a id="fics" href="https://tinyurl.com/Genshipper" target="_blank"
+          ><p>AO3</p></a
+        >
+      </div>
     </div>
-  </div>
-  <script>
-    function Char(e, a, h, w, n){
-      this.element = e;
-      this.affiliation = a;
-      this.height = h/2; //converts height in centimeters to be usable as image percentage
-      this.weapon = w;
-      this.name = n;
-      this.image = new Image();
-      this.image.src = 'images/'+n.replace(/ /g,"_")+'_Portrait.webp'; //auto-generates filepath from name
-    }
+    <script>
+      function Char(e, a, h, w, n, o) {
+        this.element = e;
+        this.affiliation = a;
+        this.height = h / 2; //converts height in centimeters to be usable as image percentage
+        this.weapon = w;
+        this.name = n;
+        this.image = "images/" + n.replace(/ /g, "_") + "_Portrait.webp"; //auto-generates filepath from name
+        if (n.includes(" ")) {
+          this.booru = n.replace(/ /g, "_").toLowerCase() + "+";
+        } else {
+          this.booru = n.toLowerCase() + "_%28genshin_impact%29+";
+        }
+        this.ao3 = o;
+      }
+      function Char(e, a, h, w, n) {
+        this.element = e;
+        this.affiliation = a;
+        this.height = h / 2; //converts height in centimeters to be usable as image percentage
+        this.weapon = w;
+        this.name = n;
+        this.image = "images/" + n.replace(/ /g, "_") + "_Portrait.webp"; //auto-generates filepath from name
+        if (n.includes(" ")) {
+          this.booru = n.replace(/ /g, "_").toLowerCase() + "+";
+        } else {
+          this.booru = n.toLowerCase() + "_%28genshin_impact%29+";
+        }
+        this.ao3 = n.replace(/ /g, "%20");
+      }
 
-    const eC = "Cryo";
-    const eE = "Electro";
-    const eP = "Pyro";
-    const eH = "Hydro";
-    const eA = "Anemo";
-    const eG = "Geo";
-    const eD = "Dendro";
+      const eC = "Cryo";
+      const eE = "Electro";
+      const eP = "Pyro";
+      const eH = "Hydro";
+      const eA = "Anemo";
+      const eG = "Geo";
+      const eD = "Dendro";
 
-    const aM = "Mondstadt";
-    const aL = "Liyue";
-    const aI = "Inazuma";
-    const aF = "Fatui";
-    const aS = "Sumeru";
-    const aN = "Snezhnaya";
+      const aM = "Mondstadt";
+      const aL = "Liyue";
+      const aI = "Inazuma";
+      const aF = "Fatui";
+      const aS = "Sumeru";
+      const aN = "Snezhnaya";
 
-    const wB = "bow";
-    const wC = "catalyst";
-    const wP = "polearm";
-    const wS = "sword";
-    const wL = "claymore";
+      const wB = "bow";
+      const wC = "catalyst";
+      const wP = "polearm";
+      const wS = "sword";
+      const wL = "claymore";
 
-    const kuj = new Char(eE, aI, 175.7, wB,"Kujou Sara");
-    const she = new Char(eC, aL, 171.8, wP,"Shenhe");
-    const rai = new Char(eE, aI, 171.5, wP,"Raiden Shogun");
-    const lis = new Char(eE, aM, 171.2, wC,"Lisa");
-    const deh = new Char(eP, aS, 170.4, wL,"Dehya");
-    const eul = new Char(eC, aM, 170.3, wL,"Eula");
-    const yel = new Char(eH, aI, 170.2, wB,"Yelan"); 
-    const jea = new Char(eA, aM, 170.1, wS,"Jean");
-    const ros = new Char(eC, aM, 169.7, wP,"Rosaria");
-    const nin = new Char(eG, aL, 169.6, wC,"Ningguang");
-    const yae = new Char(eE, aI, 169.5, wC,"Yae Miko");
-    const bei = new Char(eE, aL, 169.2, wL,"Beidou");
-    const can = new Char(eH, aS, 169.0, wP,"Candace");
-    const f = [kuj, ros, she, rai, lis, yel, jea, eul, nin, yae, bei, can, deh];
-    
-    let imageF = document.getElementById("imageF");
-    let nameF = document.getElementById("nameF");
-    nameF.style.marginRight = '20%';
+      const kuj = new Char(eE, aI, 175.7, wB, "Kujou Sara");
+      const she = new Char(eC, aL, 171.8, wP, "Shenhe");
+      const rai = new Char(
+        eE,
+        aI,
+        171.5,
+        wP,
+        "Raiden Shogun",
+        "Raiden%20Ei%20%7C%20Baal"
+      );
+      const lis = new Char(eE, aM, 171.2, wC, "Lisa");
+      const deh = new Char(eP, aS, 170.4, wL, "Dehya");
+      const eul = new Char(eC, aM, 170.3, wL, "Eula");
+      const yel = new Char(eH, aI, 170.2, wB, "Yelan");
+      const jea = new Char(eA, aM, 170.1, wS, "Jean");
+      const ros = new Char(eC, aM, 169.7, wP, "Rosaria");
+      const nin = new Char(eG, aL, 169.6, wC, "Ningguang");
+      const yae = new Char(eE, aI, 169.5, wC, "Yae Miko");
+      const bei = new Char(eE, aL, 169.2, wL, "Beidou");
+      const can = new Char(eH, aS, 169.0, wP, "Candace");
+      const f = [
+        kuj,
+        ros,
+        she,
+        rai,
+        lis,
+        yel,
+        jea,
+        eul,
+        nin,
+        yae,
+        bei,
+        can,
+        deh,
+      ];
 
-    const hei = new Char(eA, aI, 167.3, wC,"Shikanoin Heizou");
-    const sca = new Char(eA, aS, 164.7, wC,"Wanderer");
-    const ben = new Char(eP, aM, 164.5, wS,"Bennett");
-    const gor = new Char(eG, aI, 164.4, wB,"Gorou");
-    const ven = new Char(eA, aM, 164.3, wB,"Venti");
-    const xig = new Char(eH, aL, 164.2, wS,"Xingqiu");
-    const kaz = new Char(eA, aI, 163.9, wS,"Kaedehara Kazuha");
-    const raz = new Char(eE, aM, 163.5, wL,"Razor");
-    const tig = new Char(eD, aS, 173.4, wB,"Tighnari"); //actual height 163.4, offset for big ears
-    const cho = new Char(eC, aL, 163.3, wL,"Chongyun");
-    const alb = new Char(eG, aM, 162.8, wS,"Albedo");
-    const xia = new Char(eA, aL, 162.2, wP,"Xiao");
-    const cyn = new Char(eE, aS, 171.9, wP,"Cyno"); //actual height 161.9, offset for big ears
-    const m = [hei, ben, xig, ven, kaz, cho, gor, raz, xia, sca, tig, cyn, alb];
+      let imageF = document.getElementById("imageF");
+      let nameF = document.getElementById("nameF");
+      nameF.style.marginRight = "10%";
 
-    let imageM = document.getElementById("imageM");
-    let nameM = document.getElementById("nameM");
-    nameM.style.marginLeft = '15%';
+      const hei = new Char(eA, aI, 167.3, wC, "Shikanoin Heizou");
+      const sca = new Char(eA, aS, 164.7, wC, "Scaramouche");
+      const ben = new Char(eP, aM, 164.5, wS, "Bennett");
+      const gor = new Char(eG, aI, 164.4, wB, "Gorou");
+      const ven = new Char(eA, aM, 164.3, wB, "Venti");
+      const xig = new Char(eH, aL, 164.2, wS, "Xingqiu");
+      const kaz = new Char(eA, aI, 163.9, wS, "Kaedehara Kazuha");
+      const raz = new Char(eE, aM, 163.5, wL, "Razor");
+      const tig = new Char(eD, aS, 173.4, wB, "Tighnari"); //actual height 163.4, offset for big ears
+      const cho = new Char(eC, aL, 163.3, wL, "Chongyun");
+      const alb = new Char(eG, aM, 162.8, wS, "Albedo");
+      const xia = new Char(eA, aL, 162.2, wP, "Xiao", "Xiao%20%7C%20Alatus");
+      const cyn = new Char(eE, aS, 171.9, wP, "Cyno"); //actual height 161.9, offset for big ears
+      const m = [
+        hei,
+        ben,
+        xig,
+        ven,
+        kaz,
+        cho,
+        gor,
+        raz,
+        xia,
+        sca,
+        tig,
+        cyn,
+        alb,
+      ];
 
-    ship();
-    document.getElementById("butt").onclick = function() {ship()};
+      let imageM = document.getElementById("imageM");
+      let nameM = document.getElementById("nameM");
+      nameM.style.marginLeft = "10%";
 
-    function ship() {
-      let mPick = m[Math.floor(Math.random()*m.length)];
+      ship();
+      document.getElementById("butt").onclick = function () {
+        ship();
+      };
 
-      imageM.style.height = mPick.height+'%'; //as below but to exaggerate height difference
-      imageM.src = mPick.image.src;
+      function ship() {
+        let mPick = m[Math.floor(Math.random() * m.length)];
 
-      nameM.className = 'm ' + mPick.element;
-      nameM.innerHTML = mPick.name;
+        imageM.style.height = mPick.height + "%"; //as below but to exaggerate height difference
+        imageM.src = mPick.image;
 
-      let fPick = f[Math.floor(Math.random()*f.length)];
+        nameM.className = "m " + mPick.element;
+        nameM.innerHTML = mPick.name;
 
-      imageF.style.height = (fPick.height+3)+'%'; //converts height in cm to percent
-      imageF.src = fPick.image.src;
+        let fPick = f[Math.floor(Math.random() * f.length)];
 
-      nameF.className = 'f ' + fPick.element;
-      nameF.innerHTML = fPick.name;
-    }
-  </script>
-</body>
+        imageF.style.height = fPick.height + 3 + "%"; //converts height in cm to percent
+        imageF.src = fPick.image;
+
+        nameF.className = "f " + fPick.element;
+        nameF.innerHTML = fPick.name;
+
+        var fics = document.getElementById("fics");
+        if (mPick.name.localeCompare(fPick.name)) {
+          fics.setAttribute(
+            "href",
+            "https://archiveofourown.org/tags/" +
+              mPick.ao3 +
+              "*s*" +
+              fPick.ao3 +
+              "%20(Genshin%20Impact)/works"
+          );
+        } else {
+          fics.setAttribute(
+            "href",
+            "https://archiveofourown.org/tags/" +
+              fPick.ao3 +
+              "*s*" +
+              mPick.ao3 +
+              "%20(Genshin%20Impact)/works"
+          );
+        }
+        var safb = document.getElementById("safb");
+        safb.setAttribute(
+          "href",
+          "https://safebooru.org/index.php?page=post&s=list&tags=" +
+            mPick.booru +
+            fPick.booru
+        );
+      }
+    </script>
+  </body>
 </html>
