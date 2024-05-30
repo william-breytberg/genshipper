@@ -25,6 +25,10 @@
         font-size: large;
         font-family: Genshin;
       }
+      zs {
+        font-size: smaller;
+        text-align: center;
+      }
       #imageM {
         width: auto;
       }
@@ -49,6 +53,7 @@
         left: 50%;
         -ms-transform: translate(-50%, -50%);
         transform: translate(-50%, -50%);
+        text-align: center;
       }
       .Cryo {
         color: #a0e9e5;
@@ -82,12 +87,33 @@
     <div id="container">
       <div id="center">
         <button type="button" id="butt">new pairing</button>
-        <a id="safb" href="https://tinyurl.com/Genshipper" target="_blank"
-          ><p>Safebooru</p></a
-        >
-        <a id="fics" href="https://tinyurl.com/Genshipper" target="_blank"
-          ><p>AO3</p></a
-        >
+        <p>
+          <a id="safb" href="https://tinyurl.com/Genshipper" target="_blank"
+            >Safebooru</a
+          >
+        </p>
+        <p>
+          <a id="danb" href="https://tinyurl.com/Genshipper" target="_blank"
+            >Danbooru (18+)</a
+          >
+        </p>
+        <p>
+          <a id="slash" href="https://tinyurl.com/Genshipper" target="_blank"
+            ><z>AO3 (Romantic)</z>
+          </a>
+          <a id="slash2" href="https://tinyurl.com/Genshipper" target="_blank"
+            ><zs>[mirror]<zs>
+          </a>
+        </p>
+
+        <p>
+          <a id="plato" href="https://tinyurl.com/Genshipper" target="_blank"
+            ><z>AO3 (Platonic)</z>
+          </a>
+          <a id="plato2" href="https://tinyurl.com/Genshipper" target="_blank"
+            ><zs>[mirror]</zs>
+          </a>
+        </p>
       </div>
     </div>
     <script>
@@ -141,7 +167,7 @@
       const jea = makeChar1(eA, aM, 170.1, wS, "Jean");
       const kuj = makeChar1(eE, aI, 175.7, wB, "Kujou Sara"); //actual height 172.2, offset for big sandals
       const lis = makeChar1(eE, aM, 171.2, wC, "Lisa");
-      const nav = makeChar1(eG, aF, 171.2, wL, "Navia");
+      const nav = makeChar1(eG, aF, 176.2, wL, "Navia"); //actual height is 171.2, offset for big hat
       const nin = makeChar1(eG, aL, 169.6, wC, "Ningguang");
       const rai = makeChar2(
         eE,
@@ -232,14 +258,13 @@
         ship();
       };
 
-      function ficLink(nameA, nameB) {
-        return (
-          "https://archiveofourown.org/tags/" +
-          nameA +
-          "*s*" +
-          nameB +
-          "%20(Genshin%20Impact)/works"
-        );
+      function ficLink(nameA, nameB, relat, game) {
+        let link = "https://archiveofourown.org/tags/" + nameA + relat + nameB;
+        if (game) {
+          return link + "%20(Genshin%20Impact)/works";
+        } else {
+          return link + "/works";
+        }
       }
 
       function ship() {
@@ -259,11 +284,44 @@
         nameF.className = "f " + fPick.element;
         nameF.innerHTML = fPick.name;
 
-        var fics = document.getElementById("fics");
+        var slash = document.getElementById("slash");
+        var plato = document.getElementById("plato");
+        var slash2 = document.getElementById("slash2");
+        var plato2 = document.getElementById("plato2");
         if (mPick.name.localeCompare(fPick.name) < 0) {
-          fics.setAttribute("href", ficLink(mPick.ao3, fPick.ao3));
+          slash.setAttribute(
+            "href",
+            ficLink(mPick.ao3, fPick.ao3, "*s*", true)
+          );
+          slash2.setAttribute(
+            "href",
+            ficLink(mPick.ao3, fPick.ao3, "*s*", false)
+          );
+          plato.setAttribute(
+            "href",
+            ficLink(mPick.ao3, fPick.ao3, "%20*a*%20", true)
+          );
+          plato2.setAttribute(
+            "href",
+            ficLink(mPick.ao3, fPick.ao3, "%20*a*%20", false)
+          );
         } else {
-          fics.setAttribute("href", ficLink(fPick.ao3, mPick.ao3));
+          slash.setAttribute(
+            "href",
+            ficLink(fPick.ao3, mPick.ao3, "*s*", true)
+          );
+          slash2.setAttribute(
+            "href",
+            ficLink(fPick.ao3, mPick.ao3, "*s*", false)
+          );
+          plato.setAttribute(
+            "href",
+            ficLink(fPick.ao3, mPick.ao3, "%20*a*%20", true)
+          );
+          plato2.setAttribute(
+            "href",
+            ficLink(fPick.ao3, mPick.ao3, "%20*a*%20", false)
+          );
         }
         var safb = document.getElementById("safb");
         safb.setAttribute(
@@ -271,6 +329,11 @@
           "https://safebooru.org/index.php?page=post&s=list&tags=" +
             mPick.booru +
             fPick.booru
+        );
+        var danb = document.getElementById("danb");
+        danb.setAttribute(
+          "href",
+          "https://danbooru.donmai.us/posts?tags=" + mPick.booru + fPick.booru
         );
       }
     </script>
